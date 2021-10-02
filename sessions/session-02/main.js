@@ -1,7 +1,9 @@
+console.log("Ejercicios sesion 2")
+
 // 1. Pedir al usuario por prompt un numero entre 1 y 100
 //    - Verificar si es un par o impar e imprimir en resultado en consola
 
-function getANumber(number) {
+function CalculateEvenOrOdd(number) {
   number = Number(prompt("Selecciona un number entre 1 y 100: "))
 
   if (number < 1 || number > 100) {
@@ -24,8 +26,10 @@ function compareTwoNumbers(num1, num2) {
 
   if (num1 > num2) {
     return `${num1} es mayor a ${num2}`
+  } else if (num1 < num2) {
+    return `${num1} es menor a ${num2}`
   }
-  return `${num1} es menor a ${num2}`
+  return `${num1} es igual a ${num2}`
 }
 
 // 3. Pedir al usuario los siguientes datos a un usuario (nombre, peso actual en kg):
@@ -36,7 +40,11 @@ function CalculateLunarWeight(name, weight) {
 
   weight = Number(prompt("Cual es tu peso actual en kg: "))
 
-  let weightOnMoon = Math.round((weight / 9.81) * 1.622)
+  let earthGravity = 9.81
+
+  let moonGravity = 1.622
+
+  let weightOnMoon = Math.round((weight / earthGravity) * moonGravity)
 
   return `${name} tu peso en la luna es de ${weightOnMoon}kg`
 }
@@ -46,7 +54,7 @@ function CalculateLunarWeight(name, weight) {
 // 4. Pedir al usuario la calificación de un examen ( 0 a 100) por el prompt:
 //    -Imprimir en consola las equivalencias en letra su calificación, es decir:
 
-function calculateCalification(calificacion) {
+function calculateScore(calificacion) {
   calificacion = Number(prompt("Cual fue tu calificacion?: "))
 
   if (calificacion < 1 || calificacion > 100)
