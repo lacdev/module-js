@@ -4,7 +4,7 @@
 function getANumber(number) {
   number = Number(prompt("Selecciona un number entre 1 y 100: "))
 
-  if (number > 1 && number > 100) {
+  if (number < 1 || number > 100) {
     return `Por favor elige un numero entre 1 y 100`
   }
 
