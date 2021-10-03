@@ -65,9 +65,13 @@ let countrySelection = ""
 let moneyQuantity = 0
 
 function getQuantity() {
-  moneyQuantity = Number(
-    prompt("Cual es la cantidad de dinero en MXN a convertir?: ")
-  )
+  do {
+    moneyQuantity = Number(
+      prompt("Cual es la cantidad de dinero en MXN a convertir?: ")
+    )
+  } while (moneyQuantity < 0 || isNaN(moneyQuantity))
+
+  moneyQuantity = Number.parseFloat(moneyQuantity.toFixed(2))
 
   return moneyQuantity
 }
@@ -84,9 +88,9 @@ function convertToYen(money, country) {
 
   MxnRealValue = 5.43
 
-  convert = Number(moneyQuantity * MxnRealValue).toFixed(2)
+  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
 
-  return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[5]} Buen viaje.`
+  return `Gracias por usar nuestro convertidor. ${moneyQuantity}${currencies[0]} equivalen a: ${convert}${currencies[5]} Buen viaje.`
 }
 
 function convertToUsd(money, country) {
@@ -95,7 +99,7 @@ function convertToUsd(money, country) {
 
   MxnRealValue = 0.049
 
-  convert = Number(moneyQuantity * MxnRealValue).toFixed(2)
+  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
 
   return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[1]} Buen viaje.`
 }
@@ -106,7 +110,7 @@ function convertToGbp(money, country) {
 
   MxnRealValue = 0.036
 
-  convert = Number(moneyQuantity * MxnRealValue).toFixed(2)
+  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
 
   return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[2]} Buen viaje.`
 }
@@ -117,7 +121,7 @@ function convertToEur(money, country) {
 
   MxnRealValue = 0.042
 
-  convert = Number(moneyQuantity * MxnRealValue).toFixed(2)
+  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
 
   return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[3]} Buen viaje.`
 }
@@ -128,7 +132,7 @@ function convertToCad(money, country) {
 
   MxnRealValue = 0.062
 
-  convert = Number(moneyQuantity * MxnRealValue).toFixed(2)
+  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
 
   return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[4]} Buen viaje.`
 }
@@ -139,7 +143,7 @@ function convertToAud(money, country) {
 
   MxnRealValue = 0.067
 
-  convert = Number(moneyQuantity * MxnRealValue).toFixed(2)
+  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
 
   return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[6]} Buen viaje.`
 }
@@ -150,7 +154,7 @@ function convertToRmb(money, country) {
 
   MxnRealValue = 0.32
 
-  convert = Number(moneyQuantity * MxnRealValue).toFixed(2)
+  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
 
   return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[7]} Buen viaje.`
 }
