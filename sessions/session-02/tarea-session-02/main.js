@@ -133,12 +133,7 @@ function getCountry() {
   return countrySelection
 }
 
-function performConversion(money, country, value, type) {
-  money = moneyQuantity
-  country = countrySelection
-  value = MxnRealValue
-  type = typeOfCurrency
-
+function performConversion() {
   convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
 
   return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${typeOfCurrency} Buen viaje.`
