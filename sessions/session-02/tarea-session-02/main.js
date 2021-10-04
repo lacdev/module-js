@@ -64,6 +64,10 @@ let countrySelection = ""
 
 let moneyQuantity = 0
 
+let typeOfCurrency = ""
+
+let MxnRealValue = 0
+
 function getQuantity() {
   do {
     moneyQuantity = Number(
@@ -77,128 +81,73 @@ function getQuantity() {
 }
 
 function getCountry() {
-  countrySelection = prompt("A que pais vas a viajar?: ").toLowerCase()
+  do {
+    countrySelection = prompt("A que pais vas a viajar?: ").toLowerCase()
+  } while (
+    !(
+      usdCountries.includes(countrySelection) ||
+      yenCountries.includes(countrySelection) ||
+      gbpCountries.includes(countrySelection) ||
+      eurCountries.includes(countrySelection) ||
+      cadCountries.includes(countrySelection) ||
+      rmbCountries.includes(countrySelection) ||
+      audCountries.includes(countrySelection)
+    )
+  )
+
+  if (usdCountries.includes(countrySelection)) {
+    MxnRealValue = 0.049
+    typeOfCurrency = currencies[1]
+  }
+
+  if (gbpCountries.includes(countrySelection)) {
+    MxnRealValue = 0.036
+    typeOfCurrency = currencies[2]
+  }
+
+  if (eurCountries.includes(countrySelection)) {
+    MxnRealValue = 0.042
+    typeOfCurrency = currencies[3]
+  }
+
+  if (cadCountries.includes(countrySelection)) {
+    MxnRealValue = 0.062
+    typeOfCurrency = currencies[4]
+  }
+
+  if (yenCountries.includes(countrySelection)) {
+    MxnRealValue = 5.43
+    typeOfCurrency = currencies[5]
+  }
+
+  if (audCountries.includes(countrySelection)) {
+    MxnRealValue = 0.067
+    typeOfCurrency = currencies[6]
+  }
+
+  if (rmbCountries.includes(countrySelection)) {
+    MxnRealValue = 0.32
+    typeOfCurrency = currencies[7]
+  }
 
   return countrySelection
 }
 
-function convertToYen(money, country) {
+function performConversion(money, country, value, type) {
   money = moneyQuantity
   country = countrySelection
-
-  MxnRealValue = 5.43
+  value = MxnRealValue
+  type = typeOfCurrency
 
   convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
 
-  return `Gracias por usar nuestro convertidor. ${moneyQuantity}${currencies[0]} equivalen a: ${convert}${currencies[5]} Buen viaje.`
+  return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${typeOfCurrency} Buen viaje.`
 }
 
-function convertToUsd(money, country) {
-  money = moneyQuantity
-  country = countrySelection
-
-  MxnRealValue = 0.049
-
-  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
-
-  return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[1]} Buen viaje.`
-}
-
-function convertToGbp(money, country) {
-  money = moneyQuantity
-  country = countrySelection
-
-  MxnRealValue = 0.036
-
-  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
-
-  return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[2]} Buen viaje.`
-}
-
-function convertToEur(money, country) {
-  money = moneyQuantity
-  country = countrySelection
-
-  MxnRealValue = 0.042
-
-  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
-
-  return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[3]} Buen viaje.`
-}
-
-function convertToCad(money, country) {
-  money = moneyQuantity
-  country = countrySelection
-
-  MxnRealValue = 0.062
-
-  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
-
-  return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[4]} Buen viaje.`
-}
-
-function convertToAud(money, country) {
-  money = moneyQuantity
-  country = countrySelection
-
-  MxnRealValue = 0.067
-
-  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
-
-  return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[6]} Buen viaje.`
-}
-
-function convertToRmb(money, country) {
-  money = moneyQuantity
-  country = countrySelection
-
-  MxnRealValue = 0.32
-
-  convert = Number.parseFloat((moneyQuantity * MxnRealValue).toFixed(2))
-
-  return `Gracias por usar nuestro convertidor: ${moneyQuantity}${currencies[0]} equivalen a ${convert}${currencies[7]} Buen viaje.`
-}
-
-function convertCurrency(cantidad, pais) {
+function convertCurrency() {
   getQuantity()
   getCountry()
-  cantidad = moneyQuantity
-  pais = countrySelection
+  performConversion()
 
-  if (usdCountries.includes(countrySelection)) {
-    convertToUsd()
-    return convertToUsd()
-  }
-
-  if (cadCountries.includes(countrySelection)) {
-    convertToCad()
-    return convertToCad()
-  }
-
-  if (gbpCountries.includes(countrySelection)) {
-    convertToGbp()
-    return convertToGbp()
-  }
-
-  if (eurCountries.includes(countrySelection)) {
-    convertToEur()
-    return convertToEur()
-  }
-
-  if (yenCountries.includes(countrySelection)) {
-    convertToYen()
-    return convertToYen()
-  }
-
-  if (audCountries.includes(countrySelection)) {
-    convertToAud()
-    return convertToAud()
-  }
-
-  if (rmbCountries.includes(countrySelection)) {
-    convertToRmb()
-    return convertToRmb()
-  }
-
-  return `Nuestra base de datos no cuenta con el pais seleccionado te pedimos una disculpa.`
+  return performConversion()
 }
