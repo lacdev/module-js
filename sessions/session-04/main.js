@@ -131,7 +131,7 @@ function generateRandomString(length) {
 
   let stringCreated = ""
 
-  for (let i = 0; i <= length; i++) {
+  for (let i = 0; i < length; i++) {
     randomChar =
       selectionOfChars[Math.floor(Math.random() * selectionOfChars.length)]
 
