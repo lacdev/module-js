@@ -139,3 +139,12 @@ function longestWord(string) {
 
   return longest
 }
+
+// Tarea
+
+/* Solicitar al usuario ingresar un numero
+Crear una funcion que genere un string con caracteres aleatorios, 
+la longitud del string debe ser igual que el numero que ingreso el usuario
+
+input : 6
+output: '?AQX>H' */

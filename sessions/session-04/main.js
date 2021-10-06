@@ -95,3 +95,48 @@ function printTriangle(hash) {
     hash += "*"
   }
 }
+
+// Imprimir numeros 1, 22, 33, 4444 en forma de triangulo de nuevo.
+
+function printNumbersPyramid(times) {
+  do {
+    times = Number(prompt("Elige la altura de la piramide: "))
+  } while (isNaN(times) || times < 1)
+
+  for (let i = 1; i <= times; i++) {
+    board = ""
+    for (j = 0; j < i; j++) {
+      board += i
+    }
+    console.log(board)
+  }
+}
+
+// Tarea
+
+/* Solicitar al usuario ingresar un numero
+Crear una funcion que genere un string con caracteres aleatorios, 
+la longitud del string debe ser igual que el numero que ingreso el usuario
+
+input : 6
+output: '?AQX>H' */
+
+function generateRandomString(length) {
+  do {
+    length = Number(prompt("Escribe el numero de la longitud: "))
+  } while (isNaN(length) || length < 1)
+
+  const selectionOfChars =
+    "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890-+=./*!@#$%^&(){}[]:;<>?~`"
+
+  let stringCreated = ""
+
+  for (let i = 0; i <= length; i++) {
+    randomChar =
+      selectionOfChars[Math.floor(Math.random() * selectionOfChars.length)]
+
+    stringCreated += randomChar
+  }
+
+  return stringCreated
+}
