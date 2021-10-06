@@ -32,7 +32,7 @@ function checkForPairNumbers(number) {
   } while (number < 10 || number > 100 || isNaN(number))
 
   for (let i = 1; i <= number; i++) {
-    if (i % 2 === 0 && i !== 0) {
+    if (i % 2 === 0) {
       console.log(i)
     }
   }
@@ -58,16 +58,16 @@ function sumTotal(quantity) {
 // Solucion 2
 
 function sumTotal2(quantity) {
-  do {
-    quantity = Number(prompt("Introduce una cantidad: "))
-  } while (quantity < 0 || isNaN(quantity))
+  quantity = prompt("Introduce una cantidad: ")
 
-  const arrayOfNumbers = Array.from(String(quantity), Number)
+  const arrayOfNumbers = quantity.split("")
+
+  console.log(arrayOfNumbers)
 
   sum = 0
 
   for (i = 0; i < arrayOfNumbers.length; i++) {
-    sum += arrayOfNumbers[i]
+    sum += Number(arrayOfNumbers[i])
   }
   console.log(sum)
 }
