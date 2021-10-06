@@ -70,6 +70,16 @@ function getVowelsCount(string) {
   return `Tu nombre contiene ${vowelsCount} vocales.`
 }
 
+// solucion 2 match method
+
+function requestName() {
+  const name = prompt("Cual es tu nombre completo?: ", "")
+
+  const coincidences = name.match(/[aeiou]/g)
+
+  return `Tu nombre tiene ${coincidences.length} vocales`
+}
+
 /*
 Ejercicio 4:
     Del texto: 
@@ -83,11 +93,13 @@ Ejercicio 4:
 function replaceString() {
   let text = `Cada estudiante tiene su ritmo, cada estudiante tiene su talento, y cada estudiante complementa al estudiante que tiene a su lado.`
 
-  let replacedString = text.replaceAll("estudiante", "Koder")
+  const match = text.match(/estudiante/g)
 
-  let match = replacedString.match(/Koder/g)
+  console.log(`La palabra estudiante se ha usado ${match.length} veces.`)
 
-  return `La palabra estudiante fue usada ${match.length} veces. Fue reemplazada por la palabra Koder y este es el nuevo texto:  ${replacedString}`
+  const replacedString = text.replaceAll("estudiante", "Koder")
+
+  return `${replacedString}`
 }
 
 /*
