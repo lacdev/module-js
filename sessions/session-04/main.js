@@ -132,10 +132,27 @@ function generateRandomString(length) {
   let stringCreated = ""
 
   for (let i = 0; i < length; i++) {
-    randomChar =
+    const randomChar =
       selectionOfChars[Math.floor(Math.random() * selectionOfChars.length)]
 
     stringCreated += randomChar
+  }
+
+  return stringCreated
+}
+
+//Pedir un string al usuario
+
+function randomizeString(string) {
+  string = prompt("Introduce un string aleatorio: ").toLowerCase()
+
+  let stringCreated = ""
+  for (i = 0; i < string.length; i++) {
+    if (i % 2 === 0) {
+      stringCreated += string[i]
+    } else {
+      stringCreated += string[i].toUpperCase()
+    }
   }
 
   return stringCreated
