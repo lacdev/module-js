@@ -149,9 +149,9 @@ function randomizeString(string) {
   let stringCreated = ""
   for (i = 0; i < string.length; i++) {
     if (i % 2 === 0) {
-      stringCreated += string[i]
-    } else {
       stringCreated += string[i].toUpperCase()
+    } else {
+      stringCreated += string[i]
     }
   }
 
