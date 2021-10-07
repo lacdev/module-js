@@ -144,14 +144,14 @@ function generateRandomString(length) {
 //Pedir un string al usuario
 
 function randomizeString(string) {
-  string = prompt("Introduce un string aleatorio: ").toLowerCase()
+  string = prompt("Introduce un string aleatorio: ")
 
   let stringCreated = ""
   for (i = 0; i < string.length; i++) {
     if (i % 2 === 0) {
       stringCreated += string[i].toUpperCase()
     } else {
-      stringCreated += string[i]
+      stringCreated += string[i].toLowerCase()
     }
   }
 
