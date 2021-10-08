@@ -71,3 +71,13 @@ function performKoderTask() {
   saveKoderName()
   printKodersList()
 }
+
+//Reverse String
+
+function reverseString(string) {
+  string = prompt("Introduce un texto: ")
+
+  let reversedString = string.split("").reverse().join("")
+
+  return reversedString
+}
