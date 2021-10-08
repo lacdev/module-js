@@ -74,10 +74,26 @@ function performKoderTask() {
 
 //Reverse String
 
+// Solucion 1
+
 function reverseString(string) {
   string = prompt("Introduce un texto: ")
 
   let reversedString = string.split("").reverse().join("")
 
   return reversedString
+}
+
+// Solucion 2
+
+function reverseString2(string) {
+  string = prompt("Introduce un texto: ")
+
+  let newString = ""
+
+  for (i = string.length - 1; i >= 0; i--) {
+    newString += string[i]
+  }
+
+  return newString
 }
