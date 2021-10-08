@@ -49,27 +49,30 @@ function saveKoderName(number) {
     let fixedName =
       koderName[0].toUpperCase() + koderName.slice(1).toLowerCase()
 
+    let nameFirstChart = fixedName[0]
+
     let koderLastName = prompt("Introduce el primer apellido del Koder: ")
 
     let fixedLastName =
       koderLastName[0].toUpperCase() + koderLastName.slice(1).toLowerCase()
 
-    fixedFullName = `${fixedName} ${fixedLastName}`
+    let lastNameFirstChart = fixedLastName[0]
 
-    koders.push(fixedFullName)
-  }
-}
+    const koderObject = {
+      id: i + 1,
+      nombre: fixedName,
+      apellido: fixedLastName,
+      iniciales: `(${nameFirstChart}.${lastNameFirstChart}.)`,
+    }
 
-function printKodersList() {
-  for (i = 1; i <= koders.length; i++) {
-    console.log(`Koder ${[i]}: ${koders[i - 1]}`)
+    koders.push(koderObject)
   }
 }
 
 function performKoderTask() {
   indicateNumber()
   saveKoderName()
-  printKodersList()
+  return koders
 }
 
 //Reverse String
