@@ -168,7 +168,7 @@ const cartShoppings = [
 
 /*
  Práctica:
-   - obtener los productos de tipo chips en un arreglo
+   - obtener los productos de tipo chips en el arreglo cartShoppings
    - obtener los productos de tipo drink en un arreglo
    - obtener todos los productos < a $50
     - obtener >= $50
@@ -176,3 +176,51 @@ const cartShoppings = [
    - obtener el inventario total en valor de los productos tipo chips
    - obtener el inventario total en valor de los productos tipo drink
 */
+
+const getType = (cartShoppings, argument) => {
+  const coincidencias = []
+
+  cartShoppings.forEach((producto) => {
+    if (producto.type === argument) coincidencias.push(producto)
+  })
+
+  return coincidencias
+}
+
+const getLessThanFifty = (cartShoppings) => {
+  const lessThanFifty = []
+  const morethanFifty = []
+
+  cartShoppings.forEach((producto) => {
+    if (producto.price < 50) {
+      lessThanFifty.push(producto)
+    } else if (producto.price >= 50) {
+      morethanFifty.push(producto)
+    } else console.log("producto no encontrado")
+  })
+
+  console.log(lessThanFifty)
+  console.log(morethanFifty)
+}
+
+const sumTotalPrice = (cartShoppings) => {
+  let precioTotal = 0
+
+  cartShoppings.forEach((producto) => {
+    precioTotal += producto.price
+  })
+
+  return `El valor total del carrito es de $${precioTotal}MXN`
+}
+
+const sumChipOrDrinkTotal = (cartShoppings, argumento) => {
+  let precioTotal = 0
+
+  cartShoppings.forEach((producto) => {
+    if (producto.type === argumento) precioTotal += producto.price
+  })
+
+  return `El valor total del carrito con productos del tipo ${tipo} es de $${precioTotal.toFixed(
+    2
+  )}MXN`
+}
