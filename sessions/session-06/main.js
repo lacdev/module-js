@@ -127,7 +127,7 @@ const filterSong = function (songsData, band) {
 
 const result = filterSong(songsData, "The Cure")
 
-console.log(result)
+// console.log(result)
 
 /* ----------------------------
 Ejercicio 2
@@ -138,22 +138,47 @@ Ejercicio 2
 //iterrar arreglo songsData
 //Crear el criterio de busqueda
 
-const topFive = songsData
-  .sort((a, b) => {
-    return b.statistics.reproductions - a.statistics.reproductions
-  })
-  .slice(0, 5)
+// const topFive = songsData
+//   .sort((a, b) => {
+//     return b.statistics.reproductions - a.statistics.reproductions
+//   })
+//   .slice(0, 5)
 
-const newestSong = songsData
-  .sort((a, b) => {
-    return b.releaseYear - a.releaseYear
-  })
-  .slice(0, 1)
+// const newestSong = songsData
+//   .sort((a, b) => {
+//     return b.releaseYear - a.releaseYear
+//   })
+//   .slice(0, 1)
 
-const mostLikedArtist = songsData
-  .sort((a, b) => {
-    return b.statistics.likes - a.statistics.likes
-  })
-  .slice(0, 1)
+// const mostLikedArtist = songsData
+//   .sort((a, b) => {
+//     return b.statistics.likes - a.statistics.likes
+//   })
+//   .slice(0, 1)
 
 const compareAndLogData = function (property, list) {}
+
+// songsData.forEach((item, index, array) => {
+//   console.log(item, index, array)
+// })
+
+//forEach can only be used for Arrays
+//for in can also iterate through objects
+
+/* Primer parametro indica el elemento en la iteracion actual
+Segundo parametro me indica la posicion del elemento actual 
+ en el arreglo
+Tercer muestra el arreglo que se esta iterando. */
+
+songsData.forEach((item, index, array) => {
+  const { name, band, releaseYear } = item //Destructuring
+  console.log(name, band, releaseYear, index)
+})
+
+const filterSongArrow = (songsData, band) => {
+  const coincidences = []
+  songsData.forEach((song) => {
+    if (song.band === band) coincidences.push(song)
+  })
+  return coincidences
+}
