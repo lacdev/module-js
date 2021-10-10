@@ -177,50 +177,53 @@ const carritoDeCompras = [
    - obtener el inventario total en valor de los productos tipo drink
 */
 
-const getType = (carritoDeCompras, argument) => {
+const getType = (carritoDeCompras, argumento) => {
   const coincidencias = []
 
   carritoDeCompras.forEach((producto) => {
-    if (producto.type === argument) coincidencias.push(producto)
+    if (producto.type === argumento) coincidencias.push(producto)
   })
 
-  return coincidencias
+  console.log(coincidencias)
+
+  return `Encontramos ${coincidencias.length} productos del tipo ${argumento} en tu carrito de compras`
 }
 
-const getLessThanFifty = (carritoDeCompras) => {
+const sortProductsByValue = (carritoDeCompras) => {
   const lessThanFifty = []
   const morethanFifty = []
 
   carritoDeCompras.forEach((producto) => {
     if (producto.price < 50) {
       lessThanFifty.push(producto)
-    } else if (producto.price >= 50) {
-      morethanFifty.push(producto)
-    } else console.log("producto no encontrado")
+    } else morethanFifty.push(producto)
   })
 
   console.log(lessThanFifty)
+
   console.log(morethanFifty)
+
+  return `Tu carrito tiene ${lessThanFifty.length} productos con un valor menor a $50MXN y ${morethanFifty.length} productos con un valor mayor o igual a $50MXN.`
 }
 
-const sumTotalPrice = (carritoDeCompras) => {
+const sumTotalCartPrice = (carritoDeCompras) => {
   let precioTotal = 0
 
   carritoDeCompras.forEach((producto) => {
     precioTotal += producto.price
   })
 
-  return `El valor total del carrito es de $${precioTotal}MXN`
+  return `El valor total de los productos de tu carrito es de $${precioTotal}MXN`
 }
 
-const sumChipOrDrinkTotal = (carritoDeCompras, argumento) => {
+const sumTypeTotal = (carritoDeCompras, argumento) => {
   let precioTotal = 0
 
   carritoDeCompras.forEach((producto) => {
     if (producto.type === argumento) precioTotal += producto.price
   })
 
-  return `El valor total del carrito con productos del tipo ${tipo} es de $${precioTotal.toFixed(
+  return `El valor total de los productos del tipo ${argumento} en tu carrito es de $${precioTotal.toFixed(
     2
   )}MXN`
 }
