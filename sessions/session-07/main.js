@@ -1,6 +1,6 @@
 console.log("Session 07: forEach and arrow functions")
 
-const cartShoppings = [
+const carritoDeCompras = [
   {
     name: "Coca lata 355ml",
     description: "Coca lata 355ml",
@@ -168,7 +168,7 @@ const cartShoppings = [
 
 /*
  Práctica:
-   - obtener los productos de tipo chips en el arreglo cartShoppings
+   - obtener los productos de tipo chips en el arreglo carritoDeCompras
    - obtener los productos de tipo drink en un arreglo
    - obtener todos los productos < a $50
     - obtener >= $50
@@ -177,21 +177,21 @@ const cartShoppings = [
    - obtener el inventario total en valor de los productos tipo drink
 */
 
-const getType = (cartShoppings, argument) => {
+const getType = (carritoDeCompras, argument) => {
   const coincidencias = []
 
-  cartShoppings.forEach((producto) => {
+  carritoDeCompras.forEach((producto) => {
     if (producto.type === argument) coincidencias.push(producto)
   })
 
   return coincidencias
 }
 
-const getLessThanFifty = (cartShoppings) => {
+const getLessThanFifty = (carritoDeCompras) => {
   const lessThanFifty = []
   const morethanFifty = []
 
-  cartShoppings.forEach((producto) => {
+  carritoDeCompras.forEach((producto) => {
     if (producto.price < 50) {
       lessThanFifty.push(producto)
     } else if (producto.price >= 50) {
@@ -203,20 +203,20 @@ const getLessThanFifty = (cartShoppings) => {
   console.log(morethanFifty)
 }
 
-const sumTotalPrice = (cartShoppings) => {
+const sumTotalPrice = (carritoDeCompras) => {
   let precioTotal = 0
 
-  cartShoppings.forEach((producto) => {
+  carritoDeCompras.forEach((producto) => {
     precioTotal += producto.price
   })
 
   return `El valor total del carrito es de $${precioTotal}MXN`
 }
 
-const sumChipOrDrinkTotal = (cartShoppings, argumento) => {
+const sumChipOrDrinkTotal = (carritoDeCompras, argumento) => {
   let precioTotal = 0
 
-  cartShoppings.forEach((producto) => {
+  carritoDeCompras.forEach((producto) => {
     if (producto.type === argumento) precioTotal += producto.price
   })
 
