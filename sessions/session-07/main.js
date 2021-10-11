@@ -249,29 +249,35 @@ const sumTypeTotal = (carritoDeCompras, argumento) => {
 //- obtener >= $50
 
 const filterByType = (carritoDeCompras, argumento) => {
-  const filterProducts = carritoDeCompras.filter((producto) => {
+  const filteredProducts = carritoDeCompras.filter((producto) => {
     if (argumento === Number(argumento)) {
       if (argumento < 50) return producto.price < 50
 
       if (argumento >= 50) return producto.price >= 50
-    }
-
-    return producto.type.includes(argumento)
+    } else return producto.type.includes(argumento)
   })
 
-  return filterProducts
+  return filteredProducts
 }
 
 //obtener el inventario total en valor de los productos tipo drink
 //obtener el inventario total en valor de los productos tipo chips
 // obtener el inventario total en valor de todos los productos
 
-const sumTotal = (carritoDeCompras, argumento) => {
+const sumTotalByType = (carritoDeCompras, argumento) => {
   const productsTotalPrice = carritoDeCompras.reduce((sum, producto) => {
-    if (argumento == null || argumento == undefined) return sum + producto.price
+    if (
+      argumento == null ||
+      argumento == undefined ||
+      argumento === "total" ||
+      argumento === "todos"
+    )
+      return sum + producto.price
 
-    return producto.type.includes(argumento) ? sum : sum + producto.price
+    if (producto.type.includes(argumento)) {
+      return sum + producto.price
+    } else return sum
   }, 0)
 
-  return parseInt(productsTotalPrice.toFixed(2))
+  return parseInt(productsTotalPrice)
 }
