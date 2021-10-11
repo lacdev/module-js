@@ -177,6 +177,8 @@ const carritoDeCompras = [
    - obtener el inventario total en valor de los productos tipo drink
 */
 
+//Solucion 1
+
 const getType = (carritoDeCompras, argumento) => {
   const coincidencias = []
 
@@ -226,4 +228,50 @@ const sumTypeTotal = (carritoDeCompras, argumento) => {
   return `El valor total de los productos del tipo ${argumento} en tu carrito es de $${precioTotal.toFixed(
     2
   )}MXN`
+}
+
+//Solucion 2 Array Methods
+
+/*
+ Práctica:
+   - obtener los productos de tipo chips en el arreglo carritoDeCompras
+   - obtener los productos de tipo drink en un arreglo
+   - obtener todos los productos < a $50
+    - obtener >= $50
+   - obtener el inventario total en valor de todos los productos
+   - obtener el inventario total en valor de los productos tipo chips
+   - obtener el inventario total en valor de los productos tipo drink
+*/
+
+// obtener los productos de tipo chip en el arreglo carritoDeCompras
+// obtener los productos de tipo drink en el arreglo carritoDeCompras
+// obtener todos los productos < a $50
+//- obtener >= $50
+
+const filterByType = (carritoDeCompras, argumento) => {
+  const filterProducts = carritoDeCompras.filter((producto) => {
+    if (argumento === Number(argumento)) {
+      if (argumento < 50) return producto.price < 50
+
+      if (argumento >= 50) return producto.price >= 50
+    }
+
+    return producto.type.includes(argumento)
+  })
+
+  return filterProducts
+}
+
+//obtener el inventario total en valor de los productos tipo drink
+//obtener el inventario total en valor de los productos tipo chips
+// obtener el inventario total en valor de todos los productos
+
+const sumTotal = (carritoDeCompras, argumento) => {
+  const productsTotalPrice = carritoDeCompras.reduce((sum, producto) => {
+    if (argumento == null || argumento == undefined) return sum + producto.price
+
+    return producto.type.includes(argumento) ? sum : sum + producto.price
+  }, 0)
+
+  return parseInt(productsTotalPrice.toFixed(2))
 }
