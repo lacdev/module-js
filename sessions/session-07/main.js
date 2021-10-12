@@ -186,7 +186,7 @@ const getType = (carritoDeCompras, argumento) => {
     if (producto.type === argumento) coincidencias.push(producto)
   })
 
-  console.log(coincidencias)
+  // console.log(coincidencias)
 
   return `Encontramos ${coincidencias.length} productos del tipo ${argumento} en tu carrito de compras`
 }
@@ -266,13 +266,7 @@ const filterByType = (carritoDeCompras, argumento) => {
 
 const sumTotalByType = (carritoDeCompras, argumento) => {
   const productsTotalPrice = carritoDeCompras.reduce((sum, producto) => {
-    if (
-      argumento == null ||
-      argumento == undefined ||
-      argumento === "total" ||
-      argumento === "todos"
-    )
-      return sum + producto.price
+    if (argumento == null || argumento == undefined) return sum + producto.price
 
     if (producto.type.includes(argumento)) {
       return sum + producto.price
