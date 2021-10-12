@@ -87,39 +87,31 @@ const mentorsArray = [
   },
 ]
 
-/* usando mentorsArray, realizar lo siguiente:
-
-
-
-
-*/
+/* el promedio de las materias se saca con la suma del valor de todas las materias entre el numero total de materias. */
 
 // // -Obtener el score promedio de cada materia( HTML, CSS, JS, ReactJS )
 
 const promedioMateria = (mentorsArray, nombreMateria) => {
-  let promedio = 0
   let numeroDeMaterias = mentorsArray.length
+  let suma = 0
+  let promedio = 0
 
   mentorsArray.forEach((profesor) => {
-    let suma = 0
+    //Dentro de objeto profesor
     profesor.scores.forEach((materia) => {
-      if (materia.signature === nombreMateria) suma += materia.score
+      //Dentro de objeto materias
+      if (materia.signature === nombreMateria) {
+        suma += materia.score
+      }
     })
-    promedio = suma / numeroDeMaterias
   })
-
+  promedio = suma / numeroDeMaterias
   return promedio
 }
 
-/* el promedio de las materias se saca con la suma del valor de todas las materias entre el numero total de materias. */
-
 //Obtener la lista de mentores cuyo promedio sea mayor a 9.5
 
-/* sacar promedio de todos los profes luego si el promedio es mayor a 9.5 almacenar a ese profe en el arreglo mayor a 9.5 para eso vamos a usar push para guardar al profe
-   y tenemos que retornar ese arreglo que solo va a incluir al profe Alan que es promedio = 10 
-  */
-
-const ObtenerLista = (mentorsArray) => {
+const obtenerLista = (mentorsArray) => {
   let suma = 0
   let cantidadDeMaterias = 4
   let promedio = 0
@@ -127,14 +119,15 @@ const ObtenerLista = (mentorsArray) => {
   const mayora = []
 
   const mentors = mentorsArray.forEach((profesor) => {
+    //Dentro de objeto profesor
     suma = 0
     profesor.scores.forEach((materia) => {
+      //Dentro de objeto materias
       cantidadDeMaterias = profesor.scores.length
 
       promedio = (suma += materia.score) / cantidadDeMaterias
 
       if (promedio > 9.5) {
-        // mayora.push([promedio, profesor])
         mayora.push({ name: profesor.name, promedio })
       }
     })
@@ -148,9 +141,11 @@ const ObtenerLista = (mentorsArray) => {
 const obtenerPromedioIndividual = (mentorsArray) => {
   const promedios = []
   mentorsArray.forEach((profesor) => {
+    //Dentro de objeto profesor
     let suma = 0
     let promedio = 0
     profesor.scores.forEach((materia) => {
+      //Dentro de objeto materias
       suma += materia.score
     })
     promedio = suma / profesor.scores.length
