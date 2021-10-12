@@ -106,6 +106,7 @@ const promedioMateria = (mentorsArray, nombreMateria) => {
     })
   })
   promedio = suma / numeroDeMaterias
+
   return promedio
 }
 
