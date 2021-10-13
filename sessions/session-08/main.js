@@ -95,7 +95,6 @@ const promedioMateria = (mentorsArray, nombreMateria) => {
   let numeroDeMaterias = mentorsArray.length
   let suma = 0
   let promedio = 0
-  // const materiasArray = []
 
   mentorsArray.forEach((profesor) => {
     //Dentro de objeto profesor
@@ -108,9 +107,6 @@ const promedioMateria = (mentorsArray, nombreMateria) => {
     promedio = suma / numeroDeMaterias
   })
 
-  // materiasArray.push({ materia: nombreMateria, promedio })
-  // return promedio
-  // return materiasArray
   return { materia: nombreMateria, promedio }
 }
 
