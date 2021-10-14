@@ -63,3 +63,5 @@ function getProp(addressPerson2) {
 }
 
 getProp(addressPerson2)
+
+//Session 10 Exercises
