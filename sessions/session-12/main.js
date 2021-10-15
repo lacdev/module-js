@@ -107,7 +107,7 @@ que son menores a 30 años
 
 //Un array con aquellas personas que no se vacunaron
 
-const obtenerpersonasNoVacunadas = () => {
+const obtenerPersonasNoVacunadas = () => {
   return arrayPersonas.reduce((vacunadosArray, currentPerson) => {
     return !currentPerson.voted === true
       ? vacunadosArray.concat(currentPerson)
@@ -117,7 +117,7 @@ const obtenerpersonasNoVacunadas = () => {
 
 // Un array con aquellas personas que se vacunaron
 
-const obtenerpersonasVacunadas = () => {
+const obtenerPersonasVacunadas = () => {
   return arrayPersonas.reduce((vacunadosArray, currentPerson) => {
     return currentPerson.voted === true
       ? vacunadosArray.concat(currentPerson)
@@ -128,7 +128,7 @@ const obtenerpersonasVacunadas = () => {
 // - la edad promedio de todos los vacunados
 
 const obtenerEdadPromedioVacunados = () => {
-  const vacunados = obtenerpersonasVacunadas()
+  const vacunados = obtenerPersonasVacunadas()
   return vacunados.reduce((edadPromedio, personaActual) => {
     return Math.round((edadPromedio += personaActual.age / vacunados.length))
   }, 0)
@@ -137,7 +137,7 @@ const obtenerEdadPromedioVacunados = () => {
 // - un array con aquellas personas que se vacunaron y
 // que son menores a 30 años
 
-const obtenerVacunadosMenoresATreinta = () => {
+const vacunadosMenoresATreinta = () => {
   return arrayPersonas.reduce((vacunadosArray, currentPerson) => {
     return currentPerson.voted === true && currentPerson.age < 30
       ? vacunadosArray.concat(currentPerson)
@@ -147,8 +147,8 @@ const obtenerVacunadosMenoresATreinta = () => {
 
 // - la edad promedio de los no vacunados
 
-const obtenerEdadPromedioNoVacunados = () => {
-  const noVacunados = obtenerpersonasNoVacunadas()
+const edadPromedioNoVacunados = () => {
+  const noVacunados = obtenerPersonasNoVacunadas()
   return noVacunados.reduce((edadPromedio, personaActual) => {
     return Math.round((edadPromedio += personaActual.age / noVacunados.length))
   }, 0)
@@ -156,18 +156,40 @@ const obtenerEdadPromedioNoVacunados = () => {
 
 // - el porcentaje de vacunados vs no vacunados
 
-const obtenerPorcentajeVacunadosVsNoVacunados = () => {
-  return arrayPersonas.reduce(() => {}, 0)
-}
+const obtenPorcentajesVacunados = () => {}
 
 // - el procentaje de mujeres que se vacunaron
 
-const obtenerPorcentajeMujeresVacunadas = () => {
-  return arrayPersonas.reduce(() => {}, 0)
+const porcentajeMujeresVacunadas = () => {
+  return arrayPersonas
+    .filter((persona) => {
+      return persona.gender === "mujer"
+    })
+    .reduce((porcentaje, mujerActual, indiceHombre, arrayMujeres) => {
+      let mujeresVacunadas = 0
+      if (mujerActual.voted === true) {
+        mujeresVacunadas += 1
+        return porcentaje + (mujeresVacunadas / arrayMujeres.length) * 100
+      } else {
+        return porcentaje
+      }
+    }, 0)
 }
 
-// - el porcentaje de los hombres que vacunaron
+// - el porcentaje de los hombres que se vacunaron
 
-const obtenerPorcentajeHombresVacunadas = () => {
-  return arrayPersonas.reduce(() => {}, 0)
+const porcentajeHombresVacunados = () => {
+  return arrayPersonas
+    .filter((persona) => {
+      return persona.gender === "hombre"
+    })
+    .reduce((porcentaje, hombreActual, indiceHombre, arrayHombres) => {
+      let hombresVacunados = 0
+      if (hombreActual.voted === true) {
+        hombresVacunados += 1
+        return porcentaje + (hombresVacunados / arrayHombres.length) * 100
+      } else {
+        return porcentaje
+      }
+    }, 0)
 }
