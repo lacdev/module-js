@@ -66,6 +66,9 @@ const songsData = [
   },
 ]
 
+/* Para usar reduce, detectar que tenemos que filtar y regresar
+un nuevo valor */
+
 /*
 Ejercicio:
 
@@ -78,49 +81,27 @@ Ejercicio:
 
 // - Agrupar los nombres de la bandas, que no esten repetidas
 
-const filterBandsForEach = () => {
-  filteredBands = []
-  iterateBands = songsData.forEach((canciones) => {
-    if (!filteredBands.includes(canciones.band)) {
-      filteredBands.push(canciones.band)
-    }
-  })
-  return filteredBands
-}
-
-const filterBandsWithMapAndFilter = () => {
-  const filteredBands = songsData
-    .map((song) => {
-      return song.band
-    })
-    .filter((band, index, array) => {
-      return array.indexOf(band) === index
-    })
-
-  return filteredBands
-}
-
 const filterBandsReduce = () => {
-  const reducedBands = songsData.reduce((acum, current) => {
-    return acum.includes(current.band) ? acum : acum.concat(current.band)
+  const reducedBands = songsData.reduce((bands, current) => {
+    return bands.includes(current.band) ? bands : bands.concat(current.band)
   }, [])
   return reducedBands
 }
 
 // - Agrupar las canciones por banda //Pendiente
 
-const groupSongsByBand = () => {}
-
-//Tiene que retornar:
-/* [
-  {
-    band: 'mana',
-    songs: [
-     {cancion 1},
-     {cancion 2},
-    ]
-   }
- ] */
+const groupSongsByBand = () => {
+  return songsData.reduce((finalObject, currentSong) => {
+    if (!finalObject[currentSong.band]) {
+      return { ...finalObject, [currentSong.band]: [currentSong] }
+    } else {
+      return {
+        ...finalObject,
+        [currentSong.band]: [...finalObject[currentSong.band], currentSong],
+      }
+    }
+  }, {})
+}
 
 //- La cancion con más reproducciones
 
