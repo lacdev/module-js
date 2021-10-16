@@ -144,7 +144,7 @@ const numbers = [1, 2,4];
 
 
 const getResult = (array, callback) => {
-    console.log(array)
+    
 };
 
 const promediar = () => {
@@ -202,13 +202,11 @@ Retonar el arreglo ordenado
 */
 
 const sortBooksByName = () => {
- const sortedBooks =  bookList.sort((book1, book2) => {
-        a = book1.name.toUpperCase(),
-        b = book2.name.toUpperCase();
-        return a == b ? 0 : a > b ? 1 : -1;
-    });
-
-    return sortedBooks
+return bookList.sort((book1, book2) => {
+            a = book1.name.toUpperCase(),
+            b = book2.name.toUpperCase();
+            return a == b ? 0 : a > b ? 1 : -1;
+        });
 }
 
 // realizar filtrado dinamico por genero,
@@ -219,9 +217,9 @@ const sortBooksByName = () => {
 //Usar filter. reduce para iterar el arreglo
 //Retornar el arreglo filtrado
 
-const getBooksByGenre = (genreToFilter) => {
+const getBooksByGenre = (genre) => {
     return bookList.filter((book) => {
-        return book.genre_s === genreToFilter
+        return book.genre_s === genre
     })
 }
 
@@ -241,34 +239,83 @@ Retornar el arreglo con los libros con coincidencias
 
 //Includes solution
 
-const searchForTitles = (wordToFilter) => {
+const searchForBooksByTitle = (string) => {
     return bookList.filter((book) => {
-        return book.name.includes(wordToFilter)
+        return book.name.includes(string)
     })
 }
 
 //Regex Solution
 
-const searchForTitlesRegex = (wordToFilter) => {
+const searchForBooksByTitleRegex = (string) => {
     return bookList.filter((book) => {
-        const regex = new RegExp(wordToFilter, 'g')
+        const regex = new RegExp(string, 'g')
         return book.name.match(regex)
     })
 }
 
 // obtener top 3 de los libros mas rankeados
+
 const getTop3RankedBooks = () => {
 
+    const sortedBooksByRating =  bookList.sort((a, b)=> {
+     return b.ratingCount - a.ratingCount
+    })
+
+    const top3books = []
+
+     sortedBooksByRating.forEach((book) => {
+        if (top3books.length < 3) {
+            top3books.push(book)
+        }
+    })
+
+    return top3books
+    
 }
+
 // obtener los 3 libros mas baratos
+
 const getTop3CheapestBooks = () => {
-
+    const sortedBooksByPrice =  bookList.sort((a, b)=> {
+        return a.price.amount - b.price.amount
+       })
+       
+       const top3books = []
+   
+        sortedBooksByPrice.forEach((book) => {
+           if (top3books.length < 3) {
+               top3books.push(book)
+           }
+       })
+   
+       return top3books
 }
+
 // obtener el libro con fecha de publicacion mas reciente
+
 const getMostRecentBook = () => {
+   const mostRecentBooks = bookList.sort((a,b) => {
+        return parseInt(b.publishedDate) - parseInt(a.publishedDate)
+    })
+
+    const topBook = []
+
+    mostRecentBooks.forEach((book) => {
+        if (topBook.length < 1) {
+            topBook.push(book)
+        }
+    })
+
+    return topBook
 
 }
+
 // obtener los libros fuera de stock
-const getOutOfStockBook = () => {
 
+const getOutOfStockBooks = () => {
+  return bookList.filter((book)=>{
+        return book.inStock === false 
+    })
 }
+
