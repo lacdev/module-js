@@ -156,7 +156,15 @@ const edadPromedioNoVacunados = () => {
 
 // - el porcentaje de vacunados vs no vacunados
 
-const obtenPorcentajesVacunados = () => {}
+const obtenPorcentajesVacunados = () => {
+  const personasVacunadas = obtenerPersonasVacunadas().length
+  const personasNoVacunadas = obtenerPersonasNoVacunadas().length
+  const porcentajeVacunados = (personasVacunadas / arrayPersonas.length) * 100
+  const porcentajeNoVacunados =
+    (personasNoVacunadas / arrayPersonas.length) * 100
+
+  return `El porcentaje de personas vacunadas es de: ${porcentajeVacunados}%. El porcentaje de no vacunados es de: ${porcentajeNoVacunados}%`
+}
 
 // - el procentaje de mujeres que se vacunaron
 
@@ -165,7 +173,7 @@ const porcentajeMujeresVacunadas = () => {
     .filter((persona) => {
       return persona.gender === "mujer"
     })
-    .reduce((porcentaje, mujerActual, indiceHombre, arrayMujeres) => {
+    .reduce((porcentaje, mujerActual, indiceMujer, arrayMujeres) => {
       let mujeresVacunadas = 0
       if (mujerActual.voted === true) {
         mujeresVacunadas += 1
