@@ -156,12 +156,16 @@ const edadPromedioNoVacunados = () => {
 
 // - el porcentaje de vacunados vs no vacunados
 
-const obtenPorcentajesVacunados = () => {
-  const personasVacunadas = obtenerPersonasVacunadas().length
-  const personasNoVacunadas = obtenerPersonasNoVacunadas().length
-  const porcentajeVacunados = (personasVacunadas / arrayPersonas.length) * 100
-  const porcentajeNoVacunados =
-    (personasNoVacunadas / arrayPersonas.length) * 100
+const getPercentage = (number1, number2) => {
+  return (number1 / number2) * 100
+}
+
+const obtenerPorcentajesVacunados = () => {
+  const totalPersonas = arrayPersonas.length
+  const vacunados = obtenerPersonasVacunadas().length
+  const noVacunados = obtenerPersonasNoVacunadas().length
+  const porcentajeVacunados = getPercentage(vacunados, totalPersonas)
+  const porcentajeNoVacunados = getPercentage(noVacunados, totalPersonas)
 
   return `El porcentaje de personas vacunadas es de: ${porcentajeVacunados}%. El porcentaje de no vacunados es de: ${porcentajeNoVacunados}%`
 }
