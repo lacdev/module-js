@@ -295,7 +295,7 @@ const getTop3CheapestBooks = () => {
 // obtener el libro con fecha de publicacion mas reciente
 
 const getMostRecentBook = () => {
-   const mostRecentBooks = bookList.sort((a,b) => {
+    const mostRecentBooks = bookList.sort((a,b) => {
         return parseInt(b.publishedDate) - parseInt(a.publishedDate)
     })
 
