@@ -295,20 +295,12 @@ const getTop3CheapestBooks = () => {
 // obtener el libro con fecha de publicacion mas reciente
 
 const getMostRecentBook = () => {
-    const mostRecentBooks = bookList.sort((a,b) => {
+    const mostRecentBook = bookList.sort((a,b) => {
         return parseInt(b.publishedDate) - parseInt(a.publishedDate)
+    }).reduce((previousBook, currentBook)=>{
+        return previousBook.publishedDate > currentBook.publishedDate ? previousBook : currentBook
     })
-
-    const topBook = []
-
-    mostRecentBooks.forEach((book) => {
-        if (topBook.length < 1) {
-            topBook.push(book)
-        }
-    })
-
-    return topBook
-
+    return mostRecentBook
 }
 
 // obtener los libros fuera de stock
