@@ -260,17 +260,9 @@ const getTop3RankedBooks = () => {
 
     const sortedBooksByRating =  bookList.sort((a, b)=> {
      return b.ratingCount - a.ratingCount
-    })
+    }).slice(0,3)
 
-    const top3books = []
-
-     sortedBooksByRating.forEach((book) => {
-        if (top3books.length < 3) {
-            top3books.push(book)
-        }
-    })
-
-    return top3books
+    return sortedBooksByRating
     
 }
 
@@ -279,17 +271,9 @@ const getTop3RankedBooks = () => {
 const getTop3CheapestBooks = () => {
     const sortedBooksByPrice =  bookList.sort((a, b)=> {
         return a.price.amount - b.price.amount
-       })
+       }).slice(0,3)
        
-       const top3books = []
-   
-        sortedBooksByPrice.forEach((book) => {
-           if (top3books.length < 3) {
-               top3books.push(book)
-           }
-       })
-   
-       return top3books
+    return sortedBooksByPrice
 }
 
 // obtener el libro con fecha de publicacion mas reciente
