@@ -2,33 +2,30 @@ console.log("Constructor Functions")
 
 const person = {
     name: "Dante",
-    apellido: "Martinez"
+    apellido: "Koder"
 }
 
-//Funcion constructora de objeto string
-// const test new String ('este es un string')
+function Persona (name) {
+    this
+}
 
-// function Persona (name) {
-//     this
-// }
-
-// const person = {
-//   name:'ivan',
-//   paellisdo:'',
-//   saludar: function (params) {
+const person2 = {
+  name:'ivan',
+  paellisdo:'',
+  saludar: function (params) {
     
-//   }
-// };
+  }
+};
 
-// console.log(person.saludar())
+console.log(person2.saludar())
 
-// const number = [1,2,3]
-// number[1]
+const number = [1,2,3]
+number[1]
 
-// console.log(number)
+console.log(number)
 
-// const test = new String('este es un string')
-// console.log(test)
+const test = new String('este es un string')
+console.log(test)
 
 
 function Persona (name, lastName) {
@@ -36,26 +33,19 @@ function Persona (name, lastName) {
     this.lastName = lastName;
 };
   
-// const otra = () => {
-//   console.log(this);
-// };
+const otra = () => {
+  console.log(this);
+};
   
-// console.log(otra())
+console.log(otra())
   
-// const person1 = new Persona('ivan', 'diaz')
-  
-const person2 = new Persona('German', 'Martinez')
-  
+const person1 = new Persona('ivan', 'diaz')
+
 Persona.prototype.saludar = function () {
     console.log(`hola soy ${this.name}`)
 };
 
-// console.log(person1)
-console.log(person2)
-
-function Koder () {
-
-}
+console.log(person1)
 
 const koders = [
     {
@@ -221,10 +211,16 @@ const newKoders = koders.map(function(koder) {
     return new Koder(koder.name, koder.lastName, koder.birthday, koder.generation, koder.bootcamp, koder.scores)
 })
 
+console.log(newKoders)
+
 //Coleccion de Koders que pertenezcan al bootcamp de JavaScript
 
 const javascriptKoders = newKoders.filter( koder => koder.bootcamp === 'JavaScript')
 
+console.log(javascriptKoders)
+
 //Coleccion de Koders que pertenezcan al bootcamp de Python
 
 const pythonKoders = newKoders.filter( koder => koder.bootcamp === 'Python')
+
+console.log(pythonKoders)
