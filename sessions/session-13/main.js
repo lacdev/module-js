@@ -191,7 +191,7 @@ python: [
 function getAge (age) {
   const currentYear = new Date().getFullYear()
   age = age.slice(0,4)
-  return currentYear - parseInt(age.slice(0,4))
+  return currentYear - parseInt(age)
 }
 
 function getPromedio (scores) {
