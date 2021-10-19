@@ -224,3 +224,23 @@ console.log(javascriptKoders)
 const pythonKoders = newKoders.filter( koder => koder.bootcamp === 'Python')
 
 console.log(pythonKoders)
+
+//Constructor function called Book and how to use it, including an info method on it.
+
+function Book(title,author,pages,read){
+  this.title = title 
+  this.author = author
+  this.pages = pages 
+  this.read = read
+  this.info = function() { 
+  if (read){ 
+      read = `I have read it`
+   } else { 
+      read = `Not read yet`
+   }
+  return `${title} by ${author}, ${pages} pages, ${read}`
+}
+}
+
+const gravitysRainbow = new Book("Gravity's Rainbow", "Thomas Pynchon", 760, true)
+
