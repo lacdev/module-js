@@ -178,7 +178,7 @@ Obtener promedio de sus scores
 Colección de Koder que pertenezcan a JavaScript
 Colección de Koder que pertenezcan a Python
 {
-javascrip: [
+javascript: [
 koder1
 ],
 python: [
@@ -188,11 +188,15 @@ python: [
 
 */
 
+// Obtener la edad a partir de la fecha de nacimiento
+
 function getAge (age) {
   const currentYear = new Date().getFullYear()
   age = age.slice(0,4)
   return currentYear - parseInt(age)
 }
+
+// Obtener promedio de sus scores
 
 function getPromedio (scores) {
   return scores.reduce((acum, next) => {
@@ -209,6 +213,17 @@ function Koder (name, lastName, age, generation, bootcamp, promedio) {
     this.promedio = parseInt(getPromedio(promedio).toFixed(2))
 }
 
+// Generar una coleccion de objetos de tipo Koder. Agregando además las siguientes funciones:
+// Prototipo de tipo koder
+
 const newKoders = koders.map(function(koder) {
     return new Koder(koder.name, koder.lastName, koder.birthday, koder.generation, koder.bootcamp, koder.scores)
 })
+
+//Coleccion de Koders que pertenezcan al bootcamp de JavaScript
+
+const javascriptKoders = newKoders.filter( koder => koder.bootcamp === 'JavaScript')
+
+//Coleccion de Koders que pertenezcan al bootcamp de Python
+
+const pythonKoders = newKoders.filter( koder => koder.bootcamp === 'Python')
