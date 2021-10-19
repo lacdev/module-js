@@ -204,6 +204,8 @@ function getPromedio (scores) {
   },0)
 }
 
+//Funcion constructora para crear un nuevo Koder con callbacks y keys tomadas a partir de objetos en otro array.
+
 function Koder (name, lastName, age, generation, bootcamp, promedio) {
     this.name = name
     this.lastName = lastName
@@ -214,7 +216,6 @@ function Koder (name, lastName, age, generation, bootcamp, promedio) {
 }
 
 // Generar una coleccion de objetos de tipo Koder. Agregando además las siguientes funciones:
-// Prototipo de tipo koder
 
 const newKoders = koders.map(function(koder) {
     return new Koder(koder.name, koder.lastName, koder.birthday, koder.generation, koder.bootcamp, koder.scores)
