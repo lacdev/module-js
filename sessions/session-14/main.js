@@ -13,6 +13,30 @@ PersonaOld.prototype.saludar = function () {
      console.log(`Hola soy ${this.name}`)
 } 
 
+//PrintStuff Constructor function 
+function PrintStuff (myDocuments) {
+  this.documents = myDocuments
+}
+
+//We add the print() method to PrintStuff constructor so that 
+// other instances (objects) can inherit it:
+
+PrintStuff.prototype.print = function () {
+  console.log(this.documents)
+}
+
+//Create a new object with PrintStuff () constructor, thus
+// allowing this new object to inherit PrintStuff's properties and
+// methods. 
+
+const newObj = new PrintStuff("I am a new Object and I can print")
+
+//newObj inherited all the properties and methods, including the
+// print method, from the PrinStuff constructor function.
+// Now newObj can call print directly, even though we never 
+//created a print () method on it.
+newObj.print() 
+
 
 //Class constructor Syntax new sugar syntax
 
