@@ -29,7 +29,6 @@ botonSumar.textContent = `Sumar 1`
 botonSumar.setAttribute('id', 'sumar')
 contenedorBotones.appendChild(botonSumar)
 
-
 function sumarContador () {
     contador += 1
     acumulador.textContent = contador
@@ -43,9 +42,9 @@ function restarContador () {
 
 const botones = contenedorBotones.querySelectorAll('button')
 
-botones.forEach((buton)=> {
+botones.forEach((button)=> {
 
-    buton.addEventListener('click', (event)=> {
+    button.addEventListener('click', (event)=> {
         console.log(event.target)
 
         if (event.target.id === 'restar') {
