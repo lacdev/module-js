@@ -7,7 +7,6 @@ Tenemos que crear un contador y dos botones.
 Un boton tiene que sumar 
 y el otro restar.
 
-
 */
 
 let contador = 0
@@ -32,7 +31,6 @@ contenedorBotones.appendChild(botonSumar)
 function sumarContador () {
     contador += 1
     acumulador.textContent = contador
-    
 }
     
 function restarContador () {
@@ -43,14 +41,10 @@ function restarContador () {
 const botones = contenedorBotones.querySelectorAll('button')
 
 botones.forEach((button)=> {
-
     button.addEventListener('click', (event)=> {
-        console.log(event.target)
-
         if (event.target.id === 'restar') {
             restarContador()
         }
-
         if (event.target.id === 'sumar') {
             sumarContador()
         }
