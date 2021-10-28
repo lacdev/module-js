@@ -58,7 +58,28 @@ const postUsers = (name, lastName) => {
     xhr.send(JSON.stringify({name, lastName}))
 }
 
+
+const deleteUser = (userId) => {
+    const xhr = new XMLHttpRequest
+    const URL = 'https://js-14va-default-rtdb.firebaseio.com/.json'
+    xhr.addEventListener('readystatechange', ()=> {
+        if(xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText)
+            }
+        }
+        else {
+            console.log(xhr.readyState)
+        }
+    })
+    xhr.open('DELETE', URL, true)
+    xhr.send()
+}
+
+//Object.keys
+//Object.values
+//Object.entries
+
 //Post mentors in our firebase directory.
 //Get mentors posted in firebase.
 //Render mentors in our HTML as a table from firebase.
-
