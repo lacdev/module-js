@@ -150,10 +150,3 @@ const mentorsArray = [
 //     return { materia: nombreMateria, promedio }
 // }
 
-
-mentorsArray.forEach((mentor) => {
-    // console.log(mentor)
-    const mentorNew = {name: mentor.name, materias: mentor.scores}
-
-    console.log(mentorNew)
-})
